@@ -37,10 +37,11 @@ public class PlayerBehaviour : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D trigger)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (trigger.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Enemy")
         {
+            PPT.lessSaturation();
             PlayerTakeDmg(5);
             
             Debug.Log("PlayerHealth: " + GameManager.gameManager.playerHealth.Health.ToString());
