@@ -14,7 +14,7 @@ public class enemyBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void FixedUpdate()
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
