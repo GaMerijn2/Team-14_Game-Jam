@@ -16,10 +16,18 @@ public class PostProcessingTest : MonoBehaviour
         postprocessVolume = GetComponent<PostProcessVolume>();
         postprocessVolume.profile.TryGetSettings(out cg);
     }
-
     private void Update()
     {
+        loopColor();
+    }
+    public void loopColor()
+    {
+        cg.hueShift.value += 1f;
 
+        if (cg.hueShift.value == 180)
+        {
+            cg.hueShift.value = -180;
+        }
     }
     public void lessSaturation()
     {
