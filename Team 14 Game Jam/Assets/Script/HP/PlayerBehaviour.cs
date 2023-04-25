@@ -7,6 +7,15 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     public PostProcessingTest PPT;
+    public ScreenShake SS;
+    public AudioSource heartBeatSound;
+    public AudioSource whisperSound;
+    public AudioSource whisperVoicesSound;
+    public AudioSource backgroundMusic;
+
+
+
+
 
     void Start()
     {
@@ -42,8 +51,14 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             PPT.lessSaturation();
+            PPT.moreVignette();
             PlayerTakeDmg(5);
-            
+            whisperSound.volume += .2f;
+            whisperVoicesSound.volume += .2f;
+            backgroundMusic.volume -= .01f;
+            heartBeatSound.Play();
+            SS.start = true;
+
             Debug.Log("PlayerHealth: " + GameManager.gameManager.playerHealth.Health.ToString());
             if (GameManager.gameManager.playerHealth.Health <= 0)
             {
